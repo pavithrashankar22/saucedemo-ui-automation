@@ -2,6 +2,8 @@ package com.saucedemo.automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class InventoryPage {
 
@@ -11,7 +13,8 @@ public class InventoryPage {
     private By productsTitle = By.className("title");
     private By cartBadge = By.className("shopping_cart_badge");
     private By cartIcon = By.className("shopping_cart_link");
-
+    private By menuButton=By.id("react-burger-menu-btn");
+    private By logoutLink=By.id("logout_sidebar_link");
     public InventoryPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -44,4 +47,19 @@ public class InventoryPage {
     public void openCart() {
         driver.findElement(cartIcon).click();
     }
+    public void logout() {
+    // Open menu
+    driver.findElement(menuButton).click();
+
+    // Small wait for sidebar animation (simple & acceptable for demo apps)
+    try {
+        Thread.sleep(500);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+
+    // Click logout
+    driver.findElement(logoutLink).click();
 }
+   }
+

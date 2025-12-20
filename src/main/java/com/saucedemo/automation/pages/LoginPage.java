@@ -36,6 +36,7 @@ public String getErrorMessage() {
     return driver.findElement(errorMessage).getText();
 }
 
-
-
+public boolean isLoginPageDisplayed(){
+    return driver.findElement(usernameField).isDisplayed();
+}
 }
